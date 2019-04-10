@@ -45,6 +45,7 @@ class SmsComponent extends Component {
 			curl_setopt($this->curl, CURLOPT_URL, $url);
 			curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
+			curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
 			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Connection: keep-alive"));
 			$result = curl_exec($this->curl);
 			$size = curl_getinfo($this->curl, CURLINFO_HEADER_SIZE);
@@ -118,6 +119,7 @@ class SmsComponent extends Component {
 			curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
 			curl_setopt($this->curl, CURLOPT_POST, 1);
+			curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
 			curl_setopt($this->curl, CURLOPT_POSTFIELDS, "data=" . urlencode(json_encode($this->queuedActions)));
 			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Connection: keep-alive"));
 			$result = curl_exec($this->curl);
@@ -275,6 +277,7 @@ class SmsComponent extends Component {
 			curl_setopt($this->curl, CURLOPT_URL, $url);
 			curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
+			curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
 			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Connection: keep-alive"));
 			curl_setopt($this->curl, CURLOPT_POST, 1);
 			curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);

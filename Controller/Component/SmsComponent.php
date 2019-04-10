@@ -45,8 +45,8 @@ class SmsComponent extends Component {
 			curl_setopt($this->curl, CURLOPT_URL, $url);
 			curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
-			curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
-			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Connection: keep-alive"));
+			curl_setopt($this->curl, CURLOPT_ENCODING, '');
+			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Connection: keep-alive;', 'Content-Type: application/x-www-form-urlencoded; charset=utf-8'));
 			$result = curl_exec($this->curl);
 			$size = curl_getinfo($this->curl, CURLINFO_HEADER_SIZE);
 			$request_headers = curl_getinfo($this->curl, CURLINFO_HEADER_OUT);
@@ -61,7 +61,7 @@ class SmsComponent extends Component {
 			}
 			return false;
 		} else {
-			$this->debug("You need cURL to use this API Library");
+			$this->debug('You need cURL to use this API Library');
 		}
 		return FALSE;
 	}
@@ -119,9 +119,9 @@ class SmsComponent extends Component {
 			curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
 			curl_setopt($this->curl, CURLOPT_POST, 1);
-			curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
 			curl_setopt($this->curl, CURLOPT_POSTFIELDS, "data=" . urlencode(json_encode($this->queuedActions)));
-			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Connection: keep-alive"));
+			curl_setopt($this->curl, CURLOPT_ENCODING, '');
+			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Connection: keep-alive;', 'Content-Type: application/x-www-form-urlencoded; charset=utf-8'));
 			$result = curl_exec($this->curl);
 			$size = curl_getinfo($this->curl, CURLINFO_HEADER_SIZE);
 			$request_headers = curl_getinfo($this->curl, CURLINFO_HEADER_OUT);
@@ -277,8 +277,8 @@ class SmsComponent extends Component {
 			curl_setopt($this->curl, CURLOPT_URL, $url);
 			curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($this->curl, CURLINFO_HEADER_OUT, true);
-			curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
-			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Connection: keep-alive"));
+			curl_setopt($this->curl, CURLOPT_ENCODING, '');
+			curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Connection: keep-alive;', 'Content-Type: application/x-www-form-urlencoded; charset=utf-8'));
 			curl_setopt($this->curl, CURLOPT_POST, 1);
 			curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
 
@@ -293,9 +293,6 @@ class SmsComponent extends Component {
 			$this->debug($request_headers, false);
 			$this->debug($response_headers, false);
 			$this->debug($result);
-
-
-
 			if ($result !== FALSE) {
 				return json_decode($result, true);
 			}

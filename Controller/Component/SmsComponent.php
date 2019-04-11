@@ -81,7 +81,7 @@ class SmsComponent extends Component {
 			$parameters = $method->getParameters();
 			for ($i = 0; $i < count($params); $i++) {
 				if (!is_null($params[$i])) {
-					$url .= "&" . urlencode($parameters[$i]->getName()) . "=" . urlencode(utf8_encode($params[$i]));
+					$url .= "&" . urlencode($parameters[$i]->getName()) . "=" . urlencode($params[$i]);
 				}
 			}
 			return $this->call_api($url);

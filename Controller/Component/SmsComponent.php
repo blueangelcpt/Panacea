@@ -2,7 +2,7 @@
 class SmsComponent extends Component {
 	private $url = 'http://api.panaceamobile.com/json';
 	private $curl = false;
-	private $debug = false;
+	private $debug = true;
 	private $error = null;
 	private $username = null;
 	private $password = null;
@@ -12,7 +12,6 @@ class SmsComponent extends Component {
 	public function initialize(Controller $controller) {
 		$ver = explode(".", phpversion());
 		if (($ver[0] >= 5)) {
-			$this->debug("Version OK " . implode(".", $ver));
 			if (!function_exists('json_decode') || !function_exists('json_encode')) {
 				$this->debug("You need the json_encode and json_decode functions to use this Class, JSON is available in PHP 5.2.0 and up for alternatives please see http://json.org");
 				$this->debug("Your PHP version is " . implode(".", $ver) . " " . __FILE__);
@@ -81,7 +80,7 @@ class SmsComponent extends Component {
 			$parameters = $method->getParameters();
 			for ($i = 0; $i < count($params); $i++) {
 				if (!is_null($params[$i])) {
-					$url .= "&" . urlencode($parameters[$i]->getName()) . "=" . urlencode($params[$i]);
+					$url .= "&" . urlencode($parameters[$i]->getName()) . "=" . rawurlencode($params[$i]);
 				}
 			}
 			return $this->call_api($url);

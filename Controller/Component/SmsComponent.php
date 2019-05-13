@@ -2,7 +2,7 @@
 class SmsComponent extends Component {
 	private $url = 'http://api.panaceamobile.com/json';
 	private $curl = false;
-	private $debug = true;
+	private $debugEnabled = false;
 	private $error = null;
 	private $username = null;
 	private $password = null;
@@ -24,7 +24,7 @@ class SmsComponent extends Component {
 	}
 
 	private function debug($str, $nl = true) {
-		if ($this->debug) {
+		if ($this->debugEnabled) {
 			echo $str;
 			if ($nl) {
 				echo "\n";

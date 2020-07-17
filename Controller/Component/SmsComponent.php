@@ -56,6 +56,7 @@ class SmsComponent extends Component {
 			$this->debug($response_headers, false);
 			$this->debug($result);
 			if ($result !== FALSE) {
+				$this->log(json_decode($result, true), 'panacea');
 				return json_decode($result, true);
 			}
 			return false;

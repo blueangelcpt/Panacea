@@ -1,6 +1,6 @@
 <?php
 class SmsComponent extends Component {
-	private $url = 'http://api.panaceamobile.com/json';
+	private $url = 'https://na.panaceamobile.com';
 	private $curl = false;
 	private $debugEnabled = false;
 	private $error = null;
